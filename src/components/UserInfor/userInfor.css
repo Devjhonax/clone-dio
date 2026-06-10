@@ -1,0 +1,30 @@
+.user-infor {
+    display: flex;
+    gap: 10px;
+}
+
+.porcent-progression{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.bar-progression{
+    width: 169px;
+    margin-top: 6px;
+    height: 13px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    position: relative;
+}
+
+.bar-progression::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #00fe08;
+    border-radius: 15px 0 0 15px;
+}

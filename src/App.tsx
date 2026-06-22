@@ -6,10 +6,10 @@ import {
   Link
 } from "react-router-dom";
 
-import Home from "./pages/home";
-import Login from "./pages/login";
-import Feed from "./pages/Feed";
-import Cadastro from "./pages/Cadastro";
+import Home from "./pages/Home/index.js";
+import Login from "./pages/login/index.js";
+import Feed from "./pages/Feed/index.js";
+import Cadastro from "./pages/Cadastro/index.js";
 
 function App() {
   const [count, setCount] = useState(0);

@@ -1,5 +1,4 @@
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import { useNavigate } from "react-router";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -7,48 +6,53 @@ import apiAxio from "../../services/api.js";
 
 import "./cadastro.css";
 
-import Header from "../../components/Header";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import Header from "../../components/Header/index.js";
+import Input from "../../components/Input/index.js";
+import Button from "../../components/Button/index.js";
 
 import logoPassword from "../../assets/password.png";
 import logoEmail from "../../assets/iconEmail.png";
 import logoUser from "../../assets/user.png";
+import { IData } from "./types.js";
 
 const schema = yup
 
-.object({
-  username: yup.string().required("Campo obrigatório"),
-  email: yup
-  .string()
-  .email("email não é valido")
-  .required("Campo obrigatório"),
-  password: yup
-  .string()
-  .min(3, "Digite no minimo 3 caracteres")
-  .required("Campo obrigatório"),
-})
-.required();
+  .object({
+    username: yup.string().required("Campo obrigatório"),
+    email: yup
+      .string()
+      .email("email não é valido")
+      .required("Campo obrigatório"),
+    password: yup
+      .string()
+      .min(3, "Digite no minimo 3 caracteres")
+      .required("Campo obrigatório"),
+  })
+  .required();
 
 // Componente cadastro
 
 const Cadastro = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({ resolver: yupResolver(schema), mode: "onChange" });
 
-  const onSubmit =async (data) => {
+  const onSubmit = async (data: IData) => {
     try {
-      const response =  await apiAxio.post(`/users`, {name: data.username, email: data.email, password: data.password})
-      navigate("/feed")
+      const response = await apiAxio.post(`/users`, {
+        name: data.username,
+        email: data.email,
+        password: data.password,
+      });
+      navigate("/feed");
     } catch (error) {
-      alert(error)
+      alert(error);
     }
-  }
+  };
 
   return (
     <>
@@ -94,7 +98,13 @@ const Cadastro = () => {
               />
             </div>
 
-            <Button title={"Criar minha conta"} variant="secundary" />
+            {
+              isValid ? <Button
+              title={"Criar minha conta"}
+              variant="secundary"
+            /> : null  
+            }
+            
             <p>
               Ao clicar em "criar minha conta grátis", declaro que aceito as
               Políticas de Privacidade e os Termos de Uso da Dio.

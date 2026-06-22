@@ -1,14 +1,15 @@
 import { Link } from "react-router";
 import "./header.css";
+import { IHeader} from "./types"
 
-import Button from "../Button";
-import Profile from "../Profile";
+import Button from "../Button/index.js";
+import Profile from "../Profile/index.js";
 
 import logoDio from "../../assets/logoDio.png";
 import perfil from "../../assets/perfil.jpeg";
 import arrow from "../../assets/arrowIcon.png";
 
-const Header = ({ authenticate, tela }) => {
+const Header = ({ authenticate, tela }: IHeader) => {
   return (
     <header>
       <div className="nav">

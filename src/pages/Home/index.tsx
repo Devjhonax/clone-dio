@@ -4,8 +4,8 @@ import "./home.css";
 
 import feedDio from "../../assets/feedDio.png"
 
-import Button from "../../components/Button";
-import Header from "../../components/Header";
+import Button from "../../components/Button/index.js";
+import Header from "../../components/Header/index.js";
 
 const Home = () => {
   return (

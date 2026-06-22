@@ -1,6 +1,7 @@
 import "./button.css";
+import {IButton} from "./types"
 
-const Button = ({ title, variant = "primary", onclick }) => {
+const Button = ({ title, variant = "primary", onclick}: IButton) => {
   return (
     <button className={variant} onClick={onclick}>
       {title}

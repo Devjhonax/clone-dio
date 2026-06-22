@@ -7,13 +7,13 @@ import apiAxio from "../../services/api.js";
 
 import "./login.css";
 
-import Header from "../../components/Header";
-import Input from "../../components/Input";
-import Button from "../../components/Button";
+import Header from "../../components/Header/index.js";
+import Input from "../../components/Input/index.js";
+import Button from "../../components/Button/index.js";
 
 import passwordIcon from "../../assets/password.png";
 import emailIcon from "../../assets/iconEmail.png";
-import { useState } from "react";
+import { IDataform } from "./types.js";
 
 const schema = yup
   .object({
@@ -32,7 +32,7 @@ const Login = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     resolver: yupResolver(schema),
     mode: "onChange",
@@ -40,7 +40,7 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const onSubmit = async (dataForm) => {
+  const onSubmit = async (dataForm: IDataform) => {
     try {
       console.log(dataForm.email, dataForm.password);
 
@@ -55,7 +55,7 @@ const Login = () => {
         alert("Credenciais incorretas");
       }
     } catch (error) {
-      alert("Houve um erro.", error);
+      alert(`Houve um erro., ${error}`);
     }
   };
 
@@ -94,8 +94,8 @@ const Login = () => {
                 errorMessage={errors.password?.message}
               />
             </div>
-
-            <Button variant="secundary" title="Entrar" />
+            
+            {isValid ? <Button variant="secundary" title="Entrar" /> : null}
 
             <div className="div-input-ancor">
               <a href="#">Esqueci minha senha</a>

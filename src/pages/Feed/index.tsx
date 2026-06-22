@@ -1,7 +1,7 @@
 import "./feed.css";
-import Header from "../../components/Header";
-import Card from "../../components/Card";
-import UserInfor from "../../components/UserInfor";
+import Header from "../../components/Header/index.js";
+import Card from "../../components/Card/index.js";
+import UserInfor from "../../components/UserInfor/index.js";
 
 const Feed = () => {
   return (

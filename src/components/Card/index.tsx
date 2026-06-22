@@ -1,4 +1,4 @@
-import Profile from "../Profile"
+import Profile from "../Profile/index.js"
 import "./card.css"
 
 import perfil from "../../assets/perfil.jpeg"

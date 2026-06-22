@@ -1,5 +1,6 @@
 import { Controller } from "react-hook-form";
 import "./input.css";
+import { IInput } from "./types";
 
 const Input = ({
   placeholder,
@@ -9,7 +10,7 @@ const Input = ({
   type,
   icone,
   name,
-}) => {
+}: IInput) => {
   return (
     <>
       <div className="input-wrapper">
